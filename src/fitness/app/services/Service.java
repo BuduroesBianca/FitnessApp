@@ -56,6 +56,7 @@ final public class Service {
     }
 
     private boolean checkCustomerPassword(String username,String password){
+        System.out.println(usersList);
         for(User user: usersList)
             if(user.getUsername().equals(username) && user.getPassword().equals(password))
                 return true;
@@ -76,6 +77,23 @@ final public class Service {
         else
             check = false;
         return check;
+    }
+
+    public void logOut(){
+        System.out.println("Logged out");
+        currentUser = null;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void deleteAccount() throws Exception {
+        usersList.remove(usersList.indexOf(currentUser));
+        udb.deleteUser(currentUser.getId());
+        System.out.println("Account deleted");
+        currentUser = null;
+
     }
 
 }

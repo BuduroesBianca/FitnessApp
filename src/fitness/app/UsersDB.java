@@ -251,9 +251,9 @@ public class UsersDB {
     public static List<User> Read() {
         List<User> users = new ArrayList<>();
         try {
-            ResultSet results = connection.createStatement().executeQuery("SELECT ID,FIRSTNAME,LASTNAME,USERNAME FROM users");
+            ResultSet results = connection.createStatement().executeQuery("SELECT ID,FIRSTNAME,LASTNAME,EMAIL,USERNAME, PASSWORD FROM users");
             while (results.next()) {
-                users.add(new User(results.getInt(1),results.getString(2), results.getString(3),results.getString(4)));
+                users.add(new User(results.getInt(1),results.getString(2), results.getString(3),results.getString(4),results.getString(5),results.getString(6)));
             }
             return users;
         }catch(SQLException e){

@@ -10,6 +10,6 @@ public class main {
         //udb.dropTable();
         //udb.addUser("Bianca","Buduroes","bianca@gmail.com","biancaabbe","Bianca02");
         udb.showUser();
-        //new fitness.app.GUI.LoginScreen();
+        new fitness.app.GUI.LoginScreen();
     }
 }

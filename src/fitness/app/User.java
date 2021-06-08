@@ -27,11 +27,13 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String fname, String lname, String username) {
+    public User(int id, String fname, String lname, String email,String username,String password) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.username = username;
+        this.password = password;
+        this.email = email;
     }
 
 
@@ -192,5 +194,10 @@ public class User {
 
     public String getGoal() {
         return goal;
+    }
+
+    public String[] getObjectData(){
+        String[] objectData = {String.valueOf(id),lname, fname, email, username, password};
+        return objectData;
     }
 }

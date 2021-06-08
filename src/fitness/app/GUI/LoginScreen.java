@@ -73,9 +73,9 @@ public class LoginScreen extends JFrame{
                         int checkUser = services.logInUser(username, password);
                         if (checkUser == 0) {
                             JOptionPane.showMessageDialog(getRootPane(), String.format("Welcome back to DeliverEAT,\n %s ", username));
-                            //MainScreen mainScreen = new MainScreen();
-                            //mainScreen.setVisible(true);
-                            //dispose();
+                            MainScreen mainScreen = new MainScreen();
+                            mainScreen.setVisible(true);
+                            dispose();
                         } else {
                             if (checkUser == 1)
                                 JOptionPane.showMessageDialog(getRootPane(), "This username does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
