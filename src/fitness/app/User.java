@@ -13,6 +13,9 @@ public class User {
     private String goal;
     private boolean loggedIn = false;
     private String password;
+    private boolean vegetarian;
+    private int targetWeight;
+    private String typicalDay;
 
     public User(String fname, String lname, String password) {
         this.fname = fname;
@@ -28,7 +31,7 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String fname, String lname, int age, String gender, int height, int weight, String bodyType, String goal) {
+    public User(int id, String fname, String lname, int age, String gender, int height, int weight, String bodyType, String goal, String typicalDay,boolean vegetarian,int targetWeight) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -38,9 +41,12 @@ public class User {
         this.weight = weight;
         this.bodyType = bodyType;
         this.goal = goal;
+        this.vegetarian = vegetarian;
+        this.targetWeight = targetWeight;
+        this.typicalDay = typicalDay;
     }
 
-    public User(String fname, String lname, int age, String gender, int height, int weight, String bodyType, String goal) {
+    public User(String fname, String lname, int age, String gender, int height, int weight, String bodyType, String goal,String typicalDay,boolean vegetarian,int targetWeight) {
         this.fname = fname;
         this.lname = lname;
         this.age = age;
@@ -49,6 +55,17 @@ public class User {
         this.weight = weight;
         this.bodyType = bodyType;
         this.goal = goal;
+        this.vegetarian = vegetarian;
+        this.targetWeight = targetWeight;
+        this.typicalDay = typicalDay;
+    }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public int getTargetWeight() {
+        return targetWeight;
     }
 
     public boolean isLoggedIn() {

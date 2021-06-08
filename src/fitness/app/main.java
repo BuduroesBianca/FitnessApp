@@ -7,8 +7,8 @@ public class main {
     public static void main(String[] args) throws ParseException{
 
         UsersDB udb = UsersDB.getDatabaseInstance();
-        //udb.dropTable();
-        udb.addUser("Bianca","Buduroes","parola");
-        udb.showUser();
+        udb.dropTable();
+        //udb.addUser("Bianca","Buduroes","parola");
+        //udb.showUser();
     }
 }

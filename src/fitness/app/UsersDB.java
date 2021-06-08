@@ -31,7 +31,7 @@ public class UsersDB {
         }
 
         if(notFoundUsers){
-            connection.createStatement().execute("CREATE TABLE users (ID int not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),FIRSTNAME varchar(50),LASTNAME varchar(50),AGE int,GENDER varchar(50),HEIGHT int,WEIGHT int,BODYTYPE varchar(50),GOAL varchar(50), PASSWORD varchar(50))");
+            connection.createStatement().execute("CREATE TABLE users (ID int not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),FIRSTNAME varchar(50),LASTNAME varchar(50),AGE int,GENDER varchar(50),HEIGHT int,WEIGHT int,BODYTYPE varchar(50),GOAL varchar(50), TYPICALDAY varchar(50), PASSWORD varchar(50),VEGETARIAN boolean, TARGETWEIGHT int)");
         }
 
     }
@@ -95,6 +95,9 @@ public class UsersDB {
                 System.out.println("Weight:" + resultSet.getInt(7));
                 System.out.println("Body Type:" + resultSet.getString(8));
                 System.out.println("Goal:" + resultSet.getString(9));
+                System.out.println("Typicalday:" + resultSet.getString(10));
+                System.out.println("Vegetarian:" + resultSet.getBoolean(11));
+                System.out.println("Target Weight: " + resultSet.getInt(12));
                 System.out.println("\n");
             }
 
@@ -103,15 +106,15 @@ public class UsersDB {
         }
     }
 
-    public static void updateUser(String firstName,String lastName,String fieldToUpdate, String updatedValue){
+    public static void updateUser(String firstName,String lastName,String fieldToUpdate, String updatedValue) {
         PreparedStatement statement;
-        switch (fieldToUpdate){
-            case "AGE" : {
+        switch (fieldToUpdate) {
+            case "AGE": {
                 try {
                     statement = connection.prepareStatement("UPDATE users SET AGE = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
-                    statement.setInt(1,  Integer.parseInt(updatedValue));
+                    statement.setInt(1, Integer.parseInt(updatedValue));
                     statement.setString(2, firstName);
-                    statement.setString(3,lastName);
+                    statement.setString(3, lastName);
                     statement.executeUpdate();
                     System.out.println("Campul Varsta a fost modificat cu succes.");
                     break;
@@ -120,12 +123,12 @@ public class UsersDB {
                     e.printStackTrace();
                 }
             }
-            case "GENDER" : {
+            case "GENDER": {
                 try {
                     statement = connection.prepareStatement("UPDATE users SET GENDER = ? WHERE  FIRSTNAME = ? and LASTNAME = ?");
                     statement.setString(1, updatedValue);
                     statement.setString(2, firstName);
-                    statement.setString(3,lastName);
+                    statement.setString(3, lastName);
                     statement.executeUpdate();
                     System.out.println("Campul gender a fost modificat cu succes.");
                     break;
@@ -134,12 +137,12 @@ public class UsersDB {
                     e.printStackTrace();
                 }
             }
-            case "HEIGHT" : {
+            case "HEIGHT": {
                 try {
                     statement = connection.prepareStatement("UPDATE users SET HEIGHT = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
-                    statement.setString(1, updatedValue);
+                    statement.setInt(1, Integer.parseInt(updatedValue));
                     statement.setString(2, firstName);
-                    statement.setString(3,lastName);
+                    statement.setString(3, lastName);
                     statement.executeUpdate();
                     System.out.println("Campul height a fost modificat cu succes.");
                     break;
@@ -148,12 +151,12 @@ public class UsersDB {
                     e.printStackTrace();
                 }
             }
-            case "WEIGHT" : {
+            case "WEIGHT": {
                 try {
                     statement = connection.prepareStatement("UPDATE users SET WEIGHT = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
-                    statement.setString(1, updatedValue);
+                    statement.setInt(1, Integer.parseInt(updatedValue));
                     statement.setString(2, firstName);
-                    statement.setString(3,lastName);
+                    statement.setString(3, lastName);
                     statement.executeUpdate();
                     System.out.println("Campul WIGHT a fost modificat cu succes.");
                     break;
@@ -162,12 +165,12 @@ public class UsersDB {
                     e.printStackTrace();
                 }
             }
-            case "BODYTYPE" : {
+            case "BODYTYPE": {
                 try {
                     statement = connection.prepareStatement("UPDATE users SET BODYTYPE = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
-                    statement.setBoolean(1, Boolean.parseBoolean(updatedValue));
+                    statement.setString(1, updatedValue);
                     statement.setString(2, firstName);
-                    statement.setString(3,lastName);
+                    statement.setString(3, lastName);
                     statement.executeUpdate();
                     System.out.println("Campul BT a fost modificat cu succes.");
                     break;
@@ -176,12 +179,12 @@ public class UsersDB {
                     e.printStackTrace();
                 }
             }
-            case "GOAL" : {
+            case "GOAL": {
                 try {
                     statement = connection.prepareStatement("UPDATE users SET GOAL = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
-                    statement.setBoolean(1, Boolean.parseBoolean(updatedValue));
+                    statement.setString(1, updatedValue);
                     statement.setString(2, firstName);
-                    statement.setString(3,lastName);
+                    statement.setString(3, lastName);
                     statement.executeUpdate();
                     System.out.println("Campul GOAL a fost modificat cu succes.");
                     break;
@@ -190,18 +193,62 @@ public class UsersDB {
                     e.printStackTrace();
                 }
             }
+            case "TYPICALDAY": {
+                try {
+                    statement = connection.prepareStatement("UPDATE users SET TYPICALDAY = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
+                    statement.setString(1, updatedValue);
+                    statement.setString(2, firstName);
+                    statement.setString(3, lastName);
+                    statement.executeUpdate();
+                    System.out.println("Campul TD a fost modificat cu succes.");
+                    break;
+                } catch (SQLException e) {
+                    System.out.println("Campul TD nu a fost modificat. Eroare.");
+                    e.printStackTrace();
+                }
+            }
+            case "VEGETARIAN": {
+                try {
+                    statement = connection.prepareStatement("UPDATE users SET VEGETARIAN = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
+                    statement.setBoolean(1, Boolean.parseBoolean(updatedValue));
+                    statement.setString(2, firstName);
+                    statement.setString(3, lastName);
+                    statement.executeUpdate();
+                    System.out.println("Campul VEG a fost modificat cu succes.");
+                    break;
+                } catch (SQLException e) {
+                    System.out.println("Campul VEG nu a fost modificat. Eroare.");
+                    e.printStackTrace();
+                }
+            }
+            case "TARGETWEIGHT": {
+                try {
+                    statement = connection.prepareStatement("UPDATE users SET TARGETWEIGHT = ? WHERE FIRSTNAME = ? and LASTNAME = ?");
+                    statement.setInt(1, Integer.parseInt(updatedValue));
+                    statement.setString(2, firstName);
+                    statement.setString(3, lastName);
+                    statement.executeUpdate();
+                    System.out.println("Campul tw a fost modificat cu succes.");
+                    break;
+                } catch (SQLException e) {
+                    System.out.println("Campul tw nu a fost modificat. Eroare.");
+                    e.printStackTrace();
+                }
+            }
+
             default:
                 System.out.println("Nu exista aceasta coloana in tabela pacienti.");
         }
     }
 
 
+
     public static List<User> Read() {
         List<User> users = new ArrayList<>();
         try {
-            ResultSet results = connection.createStatement().executeQuery("SELECT ID,FIRSTNAME,LASTNAME,AGE,GENDER,HEIGHT,WEIGHT,BODY_TYPE,GOAL FROM users");
+            ResultSet results = connection.createStatement().executeQuery("SELECT ID,FIRSTNAME,LASTNAME,AGE,GENDER,HEIGHT,WEIGHT,BODY_TYPE,GOAL,TYPICALDAY,VEGETARIAN,TARGETWEIGHT FROM users");
             while (results.next()) {
-                users.add(new User(results.getInt(1),results.getString(2), results.getString(3), results.getInt(4), results.getString(5), results.getInt(6), results.getInt(7),results.getString(8),results.getString(9)));
+                users.add(new User(results.getInt(1),results.getString(2), results.getString(3), results.getInt(4), results.getString(5), results.getInt(6), results.getInt(7),results.getString(8),results.getString(9), results.getString(10),results.getBoolean(11),results.getInt(12)));
             }
             return users;
         }catch(SQLException e){
