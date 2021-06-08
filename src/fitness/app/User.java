@@ -16,11 +16,54 @@ public class User {
     private boolean vegetarian;
     private int targetWeight;
     private String typicalDay;
+    private String username;
+    private String email;
 
-    public User(String fname, String lname, String password) {
+    public User(String fname, String lname, String email,String username,String password) {
         this.fname = fname;
         this.lname = lname;
+        this.email = email;
+        this.username = username;
         this.password = password;
+    }
+
+    public User(int id, String fname, String lname, String username) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.username = username;
+    }
+
+
+    public User(int id, String fname, String lname, String username,int age, String gender, int height, int weight, String bodyType, String goal, String typicalDay,boolean vegetarian,int targetWeight) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.username = username;
+        this.age = age;
+        this.gender = gender;
+        this.height = height;
+        this.weight = weight;
+        this.bodyType = bodyType;
+        this.goal = goal;
+        this.vegetarian = vegetarian;
+        this.targetWeight = targetWeight;
+        this.typicalDay = typicalDay;
+    }
+
+    public User(String fname, String lname, String username, int age, String gender, int height, int weight, String bodyType, String goal,String typicalDay,boolean vegetarian,int targetWeight) {
+        this.fname = fname;
+        this.lname = lname;
+        this.username = username;
+        this.age = age;
+        this.gender = gender;
+        this.height = height;
+        this.weight = weight;
+        this.bodyType = bodyType;
+        this.goal = goal;
+        this.vegetarian = vegetarian;
+        this.targetWeight = targetWeight;
+        this.typicalDay = typicalDay;
     }
 
     public String getPassword() {
@@ -31,33 +74,36 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String fname, String lname, int age, String gender, int height, int weight, String bodyType, String goal, String typicalDay,boolean vegetarian,int targetWeight) {
-        this.id = id;
-        this.fname = fname;
-        this.lname = lname;
-        this.age = age;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.bodyType = bodyType;
-        this.goal = goal;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setVegetarian(boolean vegetarian) {
         this.vegetarian = vegetarian;
+    }
+
+    public void setTargetWeight(int targetWeight) {
         this.targetWeight = targetWeight;
+    }
+
+    public String getTypicalDay() {
+        return typicalDay;
+    }
+
+    public void setTypicalDay(String typicalDay) {
         this.typicalDay = typicalDay;
     }
 
-    public User(String fname, String lname, int age, String gender, int height, int weight, String bodyType, String goal,String typicalDay,boolean vegetarian,int targetWeight) {
-        this.fname = fname;
-        this.lname = lname;
-        this.age = age;
-        this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.bodyType = bodyType;
-        this.goal = goal;
-        this.vegetarian = vegetarian;
-        this.targetWeight = targetWeight;
-        this.typicalDay = typicalDay;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public boolean isVegetarian() {

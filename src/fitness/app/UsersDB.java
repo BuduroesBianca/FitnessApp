@@ -19,7 +19,7 @@ public class UsersDB {
     private static UsersDB instance;
 
     private UsersDB() throws SQLException {
-        this.connection = DriverManager.getConnection("jdbc:derby:C:/Users/Bianca/source/FitnessApp/FitnessAppDB;create=true");
+        this.connection = DriverManager.getConnection("jdbc:derby:FitnessAppDB;create=true");
         boolean notFoundUsers = true;
 
         ResultSet results = connection.getMetaData().getTables(null, null, null, new String[]{"TABLE"});
@@ -31,7 +31,7 @@ public class UsersDB {
         }
 
         if(notFoundUsers){
-            connection.createStatement().execute("CREATE TABLE users (ID int not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),FIRSTNAME varchar(50),LASTNAME varchar(50),AGE int,GENDER varchar(50),HEIGHT int,WEIGHT int,BODYTYPE varchar(50),GOAL varchar(50), TYPICALDAY varchar(50), PASSWORD varchar(50),VEGETARIAN boolean, TARGETWEIGHT int)");
+            connection.createStatement().execute("CREATE TABLE users (ID int not null primary key GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),FIRSTNAME varchar(50),LASTNAME varchar(50), EMAIL varchar(50),USERNAME varchar(50),AGE int,GENDER varchar(50),HEIGHT int,WEIGHT int,BODYTYPE varchar(50),GOAL varchar(50), TYPICALDAY varchar(50), PASSWORD varchar(50),VEGETARIAN boolean, TARGETWEIGHT int)");
         }
 
     }
@@ -61,15 +61,17 @@ public class UsersDB {
     }
 
 
-    public void addUser(String firstName,String lastName, String pass ) {
-        User user = new User(firstName,lastName,pass);
+    public void addUser(String firstName,String lastName, String email,String username,String password) {
+        User user = new User(firstName,lastName,email,username,password);
 
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (FIRSTNAME,LASTNAME,PASSWORD) VALUES (?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (FIRSTNAME,LASTNAME,EMAIL,USERNAME,PASSWORD) VALUES (?,?,?,?,?)");
 
             statement.setString(1, user.getFname());
             statement.setString(2, user.getLname());
-            statement.setString(3, user.getPassword());
+            statement.setString(3, user.getEmail());
+            statement.setString(4,user.getUsername());
+            statement.setString(5,user.getPassword());
 
 
             statement.executeUpdate();
@@ -89,15 +91,18 @@ public class UsersDB {
                 System.out.println("Id:" + resultSet.getInt(1));
                 System.out.println("First Name:" + resultSet.getString(2));
                 System.out.println("Last Name:" + resultSet.getString(3));
-                System.out.println("Age:" + resultSet.getInt(4));
-                System.out.println("Gender:" + resultSet.getString(5));
-                System.out.println("Height:" + resultSet.getInt(6));
-                System.out.println("Weight:" + resultSet.getInt(7));
-                System.out.println("Body Type:" + resultSet.getString(8));
-                System.out.println("Goal:" + resultSet.getString(9));
-                System.out.println("Typicalday:" + resultSet.getString(10));
-                System.out.println("Vegetarian:" + resultSet.getBoolean(11));
-                System.out.println("Target Weight: " + resultSet.getInt(12));
+                System.out.println("Email:" + resultSet.getString(4));
+                System.out.println("Username: " + resultSet.getString(5));
+                System.out.println("Age:" + resultSet.getInt(6));
+                System.out.println("Gender:" + resultSet.getString(7));
+                System.out.println("Height:" + resultSet.getInt(8));
+                System.out.println("Weight:" + resultSet.getInt(9));
+                System.out.println("Body Type:" + resultSet.getString(10));
+                System.out.println("Goal:" + resultSet.getString(11));
+                System.out.println("Typicalday:" + resultSet.getString(12));
+                System.out.println("Password: " + resultSet.getString(13));
+                System.out.println("Vegetarian:" + resultSet.getBoolean(14));
+                System.out.println("Target Weight: " + resultSet.getInt(15));
                 System.out.println("\n");
             }
 
@@ -246,9 +251,9 @@ public class UsersDB {
     public static List<User> Read() {
         List<User> users = new ArrayList<>();
         try {
-            ResultSet results = connection.createStatement().executeQuery("SELECT ID,FIRSTNAME,LASTNAME,AGE,GENDER,HEIGHT,WEIGHT,BODY_TYPE,GOAL,TYPICALDAY,VEGETARIAN,TARGETWEIGHT FROM users");
+            ResultSet results = connection.createStatement().executeQuery("SELECT ID,FIRSTNAME,LASTNAME,USERNAME FROM users");
             while (results.next()) {
-                users.add(new User(results.getInt(1),results.getString(2), results.getString(3), results.getInt(4), results.getString(5), results.getInt(6), results.getInt(7),results.getString(8),results.getString(9), results.getString(10),results.getBoolean(11),results.getInt(12)));
+                users.add(new User(results.getInt(1),results.getString(2), results.getString(3),results.getString(4)));
             }
             return users;
         }catch(SQLException e){

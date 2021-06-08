@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Jun 08 13:38:01 EEST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.1.3 - (1853019): instance a816c00e-0179-eb33-597a-00000f22e700 
+Tue Jun 08 18:24:50 EEST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.1.3 - (1853019): instance a816c00e-0179-ec39-edd0-00000f2379e8 
 on database directory C:\Users\Bianca\source\FitnessApp\FitnessAppDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
 Loaded from file:/C:/derby/db-derby-10.15.1.3-lib/db-derby-10.15.1.3-lib/lib/derby.jar
 java.vendor=Oracle Corporation
