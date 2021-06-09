@@ -54,6 +54,7 @@ public class LoginScreen extends JFrame{
         addComponentInGrid(textPassword,1,3,2,1);
 
         JButton logInButton = new JButton("LOG IN");
+
         logInButton.addActionListener(e -> {
             String username = textUsername.getText();
             String password = String.valueOf(textPassword.getPassword());
@@ -72,8 +73,9 @@ public class LoginScreen extends JFrame{
                     } else {
                         int checkUser = services.logInUser(username, password);
                         if (checkUser == 0) {
-                            JOptionPane.showMessageDialog(getRootPane(), String.format("Welcome back to DeliverEAT,\n %s ", username));
-                            MainScreen mainScreen = new MainScreen();
+                            JOptionPane.showMessageDialog(getRootPane(), String.format("Welcome back to FitnessApp,\n %s ", username));
+                            //MainScreen mainScreen = new MainScreen();
+                            GenderScreen mainScreen = new GenderScreen();
                             mainScreen.setVisible(true);
                             dispose();
                         } else {
@@ -86,6 +88,12 @@ public class LoginScreen extends JFrame{
                 }
             }
         });
+
+        /*logInButton.addActionListener(e -> {
+            GenderScreen g = new GenderScreen();
+            g.setVisible(true);
+            dispose();
+        });*/
 
         gridCons.fill = GridBagConstraints.HORIZONTAL;
         addComponentInGrid(logInButton,1,4,1,1);
@@ -102,6 +110,8 @@ public class LoginScreen extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+        setLocationRelativeTo(null);
+
     }
 
 }

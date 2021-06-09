@@ -13,11 +13,12 @@ public class MainScreen extends JFrame{
 
     MainScreen() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(1000, (int) screenSize.getHeight() - 50);
+        setSize(800, 600);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("FitnessApp");
         setJMenuBar(mainMenuBar());
+        setLocationRelativeTo(null);
     }
 
     JMenuBar mainMenuBar() {

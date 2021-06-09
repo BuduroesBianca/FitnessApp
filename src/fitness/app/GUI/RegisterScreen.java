@@ -14,6 +14,7 @@ public class RegisterScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setTitle("Registration Form");
+        setLocationRelativeTo(null);
 
         JLabel labelTitle = new JLabel("New user registration:");
         labelTitle.setFont(new Font("Ariel", Font.BOLD, 20));

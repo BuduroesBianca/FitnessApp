@@ -14,7 +14,7 @@ public class ProfileScreen extends JFrame {
     private boolean editMode = false;
 
     ProfileScreen() {
-        setSize(550, 550);
+        setSize(800, 600);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -23,6 +23,7 @@ public class ProfileScreen extends JFrame {
         add(topPanel(), BorderLayout.NORTH);
         add(infoPanel(), BorderLayout.CENTER);
         add(bottomPanel(), BorderLayout.SOUTH);
+        setLocationRelativeTo(null);
     }
 
     JPanel infoPanel(){
