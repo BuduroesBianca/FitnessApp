@@ -55,19 +55,17 @@ public class LoginScreen extends JFrame{
 
         JButton logInButton = new JButton("LOG IN");
 
-        logInButton.addActionListener(e -> {
+       logInButton.addActionListener(e -> {
             String username = textUsername.getText();
             String password = String.valueOf(textPassword.getPassword());
-            boolean invalidUsernameInput = username.isEmpty() || username.isBlank() || username==null;
-            boolean invalidPasswordInput = password.isEmpty() || password.isBlank() || password==null;
-            if(invalidUsernameInput || invalidPasswordInput) {
+            boolean invalidUsernameInput = username.isEmpty() || username.isBlank() || username == null;
+            boolean invalidPasswordInput = password.isEmpty() || password.isBlank() || password == null;
+            if (invalidUsernameInput || invalidPasswordInput) {
                 JOptionPane.showMessageDialog(getRootPane(), "All fields must be completed!", "Alert", JOptionPane.WARNING_MESSAGE);
-            }
-            else{
-                if(username.contains(" ")){
+            } else {
+                if (username.contains(" ")) {
                     JOptionPane.showMessageDialog(getRootPane(), "Username must not contain spaces", "Alert", JOptionPane.WARNING_MESSAGE);
-                }
-                else {
+                } else {
                     if (password.contains(" ")) {
                         JOptionPane.showMessageDialog(getRootPane(), "Password must not contain spaces", "Alert", JOptionPane.WARNING_MESSAGE);
                     } else {
@@ -89,8 +87,8 @@ public class LoginScreen extends JFrame{
             }
         });
 
-        /*logInButton.addActionListener(e -> {
-            GenderScreen g = new GenderScreen();
+       /* logInButton.addActionListener(e -> {
+            InfoScreen g = new InfoScreen();
             g.setVisible(true);
             dispose();
         });*/

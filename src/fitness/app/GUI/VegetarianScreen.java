@@ -1,30 +1,30 @@
 package fitness.app.GUI;
 
-import fitness.app.User;
 import fitness.app.UsersDB;
 import fitness.app.services.Service;
-import javax.swing.*;
-import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class GenderScreen extends JFrame {
+public class VegetarianScreen extends JFrame {
 
     private Service services = Service.getServicesInstance();
     UsersDB udb = UsersDB.getDatabaseInstance();
-    private int femaleSelected = 0;
-    private int maleSelected = 0;
+    private int noSelected = 0;
+    private int yesSelected = 0;
+    private int maintainSelected = 0;
 
-    public GenderScreen() {
+    public VegetarianScreen() {
         setSize(800, 600);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setTitle("Gender");
+        setTitle("Vegetarian");
         setLayout(new BorderLayout());
         add(topPanel(), BorderLayout.NORTH);
         add(infoPanel(), BorderLayout.CENTER);
@@ -35,70 +35,73 @@ public class GenderScreen extends JFrame {
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(null);
 
-        JRadioButton female = new JRadioButton();
-        JRadioButton male = new JRadioButton();
+        JRadioButton no = new JRadioButton("               YES");
+        JRadioButton yes = new JRadioButton("               NO");
+
+        ImageIcon icon1 = new ImageIcon(new ImageIcon("C:/Users/Bianca/Desktop/Imagini/male.png").getImage().getScaledInstance(1,1,Image.SCALE_DEFAULT));
+        no.setIcon(icon1);
+        yes.setIcon(icon1);
+
         JButton jButton = new JButton("Submit");
-        JLabel gender = new JLabel("Select your gender",JLabel.CENTER);
+        JLabel goal = new JLabel("Are You a Vegetarian?",JLabel.CENTER);
 
+        no.setBackground(Color.decode("#32a864"));
+        no.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 15));
+        no.setForeground(Color.white);
 
-        ImageIcon icon = new ImageIcon(new ImageIcon("C:/Users/Bianca/Desktop/Imagini/female.png").getImage().getScaledInstance(164,340,Image.SCALE_DEFAULT));
-        female.setIcon(icon);
-
-        ImageIcon icon1 = new ImageIcon(new ImageIcon("C:/Users/Bianca/Desktop/Imagini/male.png").getImage().getScaledInstance(164,327,Image.SCALE_DEFAULT));
-        male.setIcon(icon1);
-
+        yes.setBackground(Color.decode("#32a864"));
+        yes.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 15));
+        yes.setForeground(Color.white);
 
         ButtonGroup G = new ButtonGroup();
 
-        gender.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+        goal.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 
         jButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
         jButton.setBackground(Color.decode("#34b4eb"));
-
         jButton.setForeground(Color.WHITE);
 
-        female.setBounds(200,60,164,340);
-        male.setBounds(420,60,164,327);
-        jButton.setBounds(350, 410, 110, 40);
-        gender.setBounds(280,10,200,40);
+        no.setBounds(285,130,200,60);
+        yes.setBounds(285,230,200,60);
+        jButton.setBounds(330, 380, 110, 40);
+        goal.setBounds(210,20,350,40);
         jButton.setBorderPainted(false);
 
-        infoPanel.add(gender);
-        infoPanel.add(female);
-        infoPanel.add(male);
+        infoPanel.add(goal);
+        infoPanel.add(yes);
+        infoPanel.add(no);
         infoPanel.add(jButton);
 
 
-        G.add(female);
-        G.add(male);
+        G.add(no);
+        G.add(yes);
 
 
-        female.addActionListener(new ActionListener() {
-            int count = 0;
+        no.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
-                if(maleSelected == 1)
-                        male.setBorderPainted(false);
-                femaleSelected = 1;
-                female.setBorderPainted(true);
-                female.setBorder(BorderFactory.createLineBorder(Color.decode("#d149de"), 1));
+                if(yesSelected == 1) {
+                    yes.setBorderPainted(false);
+                }
+                noSelected = 1;
+                no.setBorderPainted(true);
+                no.setBorder(BorderFactory.createLineBorder(Color.decode("#3493eb"), 3));
 
             }
         });
 
-       male.addActionListener(new ActionListener() {
-            int count = 0;
+        yes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(femaleSelected == 1)
-                    female.setBorderPainted(false);
-                maleSelected = 1;
-                male.setBorderPainted(true);
-                male.setBorder(BorderFactory.createLineBorder(Color.decode("#3493eb"), 1));
+                if(noSelected == 1) {
+                    no.setBorderPainted(false);
+                }
+                yesSelected = 1;
+                yes.setBorderPainted(true);
+                yes.setBorder(BorderFactory.createLineBorder(Color.decode("#3493eb"), 3));
 
             }
         });
@@ -108,15 +111,15 @@ public class GenderScreen extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
 
-                if (female.isSelected()) {
-                    UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "GENDER","Female");
+                if (yes.isSelected()) {
+                    UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "VEGETARIAN","yes");
                     GoalScreen gs = new GoalScreen();
                     gs.setVisible(true);
                     dispose();
                 }
 
-                else if (male.isSelected()) {
-                    UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "GENDER","Male");
+                else if (no.isSelected()) {
+                    UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "VEGETARIAN","no");
                     GoalScreen gs = new GoalScreen();
                     gs.setVisible(true);
                     dispose();
@@ -137,13 +140,13 @@ public class GenderScreen extends JFrame {
         JButton backToMainScreen = new JButton("<< Back to Main Page");
         backToMainScreen.addActionListener(e -> {
             dispose();
-            MainScreen mainScreen = new MainScreen();
-            mainScreen.setVisible(true);
+            GenderScreen gs = new GenderScreen();
+            gs.setVisible(true);
         });
         topPanel.add(backToMainScreen);
 
         JLabel labelTitle = new JLabel("Let's Create Your Body Profile", JLabel.CENTER);
-        JLabel labelQuestion = new JLabel("Select your gender.", JLabel.CENTER);
+
         labelTitle.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 20));
         labelTitle.setBorder(new EmptyBorder(20, 70, 0, 0));
         topPanel.add(labelTitle);
@@ -151,3 +154,4 @@ public class GenderScreen extends JFrame {
     }
 
 }
+
