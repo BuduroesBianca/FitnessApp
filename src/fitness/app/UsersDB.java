@@ -60,6 +60,64 @@ public class UsersDB {
         }
     }
 
+    public String getGender(String username) {
+        String gender = "";
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT GENDER FROM users WHERE USERNAME = '" + username + "'");
+            while(resultSet.next())
+                gender = resultSet.getString(1);
+            return gender;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public int getWeight(String username) {
+        int weight = 0;
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT WEIGHT FROM users WHERE USERNAME = '" + username + "'");
+            while(resultSet.next())
+                weight = resultSet.getInt(1);
+            return weight;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int getHeight(String username) {
+        int height = 0;
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT HEIGHT FROM users WHERE USERNAME = '" + username + "'");
+
+            while(resultSet.next())
+                 height = resultSet.getInt(1);
+            return height;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int getAge(String username) {
+        int age = 0;
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT AGE FROM users WHERE USERNAME = '" + username + "'");
+
+            while(resultSet.next())
+                age = resultSet.getInt(1);
+            return age;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 
     public void addUser(String firstName,String lastName, String email,String username,String password) {
         User user = new User(firstName,lastName,email,username,password);

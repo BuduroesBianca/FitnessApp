@@ -28,34 +28,51 @@ public class LoginScreen extends JFrame{
         panel = (JPanel) getContentPane();
         gridBag = new GridBagLayout();
         panel.setLayout(gridBag);
+        panel.setOpaque(true);
+        panel.setBackground(Color.decode("#f5ebd5"));
+        JLabel loginIcon = new JLabel();
+
+        ImageIcon img = new ImageIcon(new ImageIcon("Imagini/login.gif").getImage().getScaledInstance(180,250,Image.SCALE_DEFAULT));
+        loginIcon.setIcon(img);
+
 
         gridCons = new GridBagConstraints();
         gridCons.weightx = 1;
         gridCons.weighty = 1;
-        gridCons.insets = new Insets(5,5,5,5);
+        gridCons.insets = new Insets(6,6,6,6);
         JLabel labelLogin = new JLabel("LOGIN", JLabel.CENTER);
         labelLogin.setFont(new Font("Arial",Font.BOLD,22));
         gridCons.fill = GridBagConstraints.BOTH;
-        addComponentInGrid(labelLogin,0,0,4,1);
+
+        JLabel labelIcon = new JLabel();
+        labelIcon.setIcon(img);
+        labelIcon.setHorizontalAlignment(JLabel.CENTER);
+
+        addComponentInGrid(labelIcon,0,0,3,1);
+        //addComponentInGrid(loginIcon,1,1,3,1);
 
         JLabel labelUsername = new JLabel("Username:");
         gridCons.fill = GridBagConstraints.NONE;
         gridCons.anchor = GridBagConstraints.CENTER;
-        addComponentInGrid(labelUsername,0,2,1,1);
+        addComponentInGrid(labelUsername,0,1,1,3);
+        labelUsername.setBounds(0,300,100,20);
 
         JLabel labelPassword = new JLabel("Password:");
-        addComponentInGrid(labelPassword,0,3,1,1);
+
+        addComponentInGrid(labelPassword,0,2,1,3);
 
         gridCons.fill = GridBagConstraints.HORIZONTAL;
         gridCons.anchor = GridBagConstraints.CENTER;
         JTextField textUsername = new JTextField("",30);
         JPasswordField textPassword = new JPasswordField("",30);
-        addComponentInGrid(textUsername,1,2,2,1);
-        addComponentInGrid(textPassword,1,3,2,1);
+        textPassword.setBorder(BorderFactory.createLineBorder(Color.white));
+        addComponentInGrid(textUsername,1,1,2,3);
+        addComponentInGrid(textPassword,1,2,2,3);
+        textUsername.setBorder(BorderFactory.createLineBorder(Color.white));
 
         JButton logInButton = new JButton("LOG IN");
 
-       logInButton.addActionListener(e -> {
+       /*logInButton.addActionListener(e -> {
             String username = textUsername.getText();
             String password = String.valueOf(textPassword.getPassword());
             boolean invalidUsernameInput = username.isEmpty() || username.isBlank() || username == null;
@@ -85,16 +102,15 @@ public class LoginScreen extends JFrame{
                     }
                 }
             }
-        });
-
-       /*logInButton.addActionListener(e -> {
-            BodyTypeScreenFemale g = new BodyTypeScreenFemale();
+        });*/
+      logInButton.addActionListener(e -> {
+            DashboardScreen g = new DashboardScreen();
             g.setVisible(true);
             dispose();
         });
-        */
+
         gridCons.fill = GridBagConstraints.HORIZONTAL;
-        addComponentInGrid(logInButton,1,4,1,1);
+        addComponentInGrid(logInButton,1,4,2,1);
 
         JButton signUpButton = new JButton("SIGN UP");
         signUpButton.addActionListener(e -> {
@@ -102,7 +118,7 @@ public class LoginScreen extends JFrame{
             dispose();
             registerScreen.setVisible(true);
         });
-        addComponentInGrid(signUpButton,2,4,1,1);
+        addComponentInGrid(signUpButton,3,4,2,1);
 
         setSize(new Dimension(500,500));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

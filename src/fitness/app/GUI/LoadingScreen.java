@@ -33,6 +33,8 @@ public class LoadingScreen extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                Results r = new Results();
+                r.setVisible(true);
             }
         });
         timer.start();

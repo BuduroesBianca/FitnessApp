@@ -96,4 +96,66 @@ final public class Service {
 
     }
 
+    public double calculateLoseWeightCalories(){
+        double maintainCalories = calculateMaintainCalories();
+        double loseCalories = 75/100 * maintainCalories;
+
+        return loseCalories;
+
+    }
+
+    public double calculateGainMuscleCalories(){
+        double maintainCalories = calculateMaintainCalories();
+        double gainCalories = 115/100 * maintainCalories;
+
+        return gainCalories;
+
+    }
+
+    public double calculateMaintainCalories(){
+        int weight = getCurrentUser().getWeight();
+        String bodyType = getCurrentUser().getBodyType();
+        String typicalDay = getCurrentUser().getTypicalDay();
+        String gender = getCurrentUser().getGender();
+
+        int g = 0;
+        double bt = 0;
+        double l = 0;
+
+        if(gender == "Female"){ g = 20; }
+        if(gender == "Male") { g = 22; }
+
+        if(bodyType == "Pear") { bt = 1.5; }
+        else if (bodyType == "Round") { bt = 1.3; }
+        else if (bodyType == "Rectangular") { bt = 1.7; }
+        else if (bodyType == "Hourglass") { bt = 1.5; }
+
+        if(typicalDay == "Mostly at home") { l = 0; }
+        else if(typicalDay == "At the office") { l = 0.2; }
+        else if(typicalDay == "Daily long walks") { l = 0.4; }
+        else if(typicalDay == "Physical work") { l = 0.6; }
+
+        double maintainCalories = weight * g * (bt + l);
+        return maintainCalories;
+    }
+
+    public double calculateBMR(){
+        System.out.println(getCurrentUser().getFname());
+        int weight = udb.getWeight(getCurrentUser().getUsername());
+        int height = udb.getHeight(getCurrentUser().getUsername());
+        int age = udb.getAge(getCurrentUser().getUsername());
+        String gender = udb.getGender(getCurrentUser().getUsername());
+        System.out.println(gender);
+        double BMR = 0;
+
+        if(gender.equalsIgnoreCase("Female")){
+            BMR = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age); // formula pt BMR femei
+        }
+        if(gender.equalsIgnoreCase("Male")){
+            BMR = 88.362 + (13.397*weight) + (4.799*height) - (5.677*age); // BMR barbati
+        }
+        System.out.println(BMR);
+        return BMR;
+    }
+
 }

@@ -154,7 +154,13 @@ public class InfoScreen extends JFrame {
     JPanel topPanel(){
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 5, 20));
-        JButton backToMainScreen = new JButton("<< Back to Main Page");
+        JButton backToMainScreen = new JButton("Back To Vegetarian");
+        backToMainScreen.setOpaque(true);
+        backToMainScreen.setBackground(Color.black);
+        backToMainScreen.setForeground(Color.white);
+        backToMainScreen.setBorderPainted(true);
+        backToMainScreen.setBorder(BorderFactory.createLineBorder(Color.black, 8));
+        backToMainScreen.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 12));
         backToMainScreen.addActionListener(e -> {
             dispose();
             VegetarianScreen vs = new VegetarianScreen();
