@@ -73,7 +73,7 @@ public class LoginScreen extends JFrame{
                         if (checkUser == 0) {
                             JOptionPane.showMessageDialog(getRootPane(), String.format("Welcome back to FitnessApp,\n %s ", username));
                             //MainScreen mainScreen = new MainScreen();
-                            GenderScreen mainScreen = new GenderScreen();
+                            MainScreen mainScreen = new MainScreen();
                             mainScreen.setVisible(true);
                             dispose();
                         } else {
@@ -87,12 +87,12 @@ public class LoginScreen extends JFrame{
             }
         });
 
-       /* logInButton.addActionListener(e -> {
-            InfoScreen g = new InfoScreen();
+       /*logInButton.addActionListener(e -> {
+            BodyTypeScreenFemale g = new BodyTypeScreenFemale();
             g.setVisible(true);
             dispose();
-        });*/
-
+        });
+        */
         gridCons.fill = GridBagConstraints.HORIZONTAL;
         addComponentInGrid(logInButton,1,4,1,1);
 

@@ -41,10 +41,10 @@ public class GenderScreen extends JFrame {
         JLabel gender = new JLabel("Select your gender",JLabel.CENTER);
 
 
-        ImageIcon icon = new ImageIcon(new ImageIcon("C:/Users/Bianca/Desktop/Imagini/female.png").getImage().getScaledInstance(164,340,Image.SCALE_DEFAULT));
+        ImageIcon icon = new ImageIcon(new ImageIcon("Imagini/female.png").getImage().getScaledInstance(164,340,Image.SCALE_DEFAULT));
         female.setIcon(icon);
 
-        ImageIcon icon1 = new ImageIcon(new ImageIcon("C:/Users/Bianca/Desktop/Imagini/male.png").getImage().getScaledInstance(164,327,Image.SCALE_DEFAULT));
+        ImageIcon icon1 = new ImageIcon(new ImageIcon("Imagini/male.png").getImage().getScaledInstance(164,327,Image.SCALE_DEFAULT));
         male.setIcon(icon1);
 
 
@@ -110,15 +110,15 @@ public class GenderScreen extends JFrame {
 
                 if (female.isSelected()) {
                     UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "GENDER","Female");
-                    GoalScreen gs = new GoalScreen();
-                    gs.setVisible(true);
+                    BodyTypeScreenFemale btf = new BodyTypeScreenFemale();
+                    btf.setVisible(true);
                     dispose();
                 }
 
                 else if (male.isSelected()) {
                     UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "GENDER","Male");
-                    GoalScreen gs = new GoalScreen();
-                    gs.setVisible(true);
+                    BodyTypeScreenMale btm = new BodyTypeScreenMale();
+                    btm.setVisible(true);
                     dispose();
                 }
                 else{

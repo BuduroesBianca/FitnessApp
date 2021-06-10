@@ -142,8 +142,8 @@ public class InfoScreen extends JFrame {
                 UsersDB.updateUser(services.getCurrentUser().getFname(), services.getCurrentUser().getLname(), "WEIGHT", userData[2]);
                 UsersDB.updateUser(services.getCurrentUser().getFname(), services.getCurrentUser().getLname(), "TARGETWEIGHT", userData[3]);
 
-                VegetarianScreen vs = new VegetarianScreen();
-                vs.setVisible(true);
+                LoadingScreen ls = new LoadingScreen();
+                ls.setVisible(true);
                 dispose();
             }
 
@@ -157,8 +157,8 @@ public class InfoScreen extends JFrame {
         JButton backToMainScreen = new JButton("<< Back to Main Page");
         backToMainScreen.addActionListener(e -> {
             dispose();
-            GenderScreen gs = new GenderScreen();
-            gs.setVisible(true);
+            VegetarianScreen vs = new VegetarianScreen();
+            vs.setVisible(true);
         });
         topPanel.add(backToMainScreen);
 

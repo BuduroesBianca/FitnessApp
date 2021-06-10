@@ -38,7 +38,7 @@ public class VegetarianScreen extends JFrame {
         JRadioButton no = new JRadioButton("               YES");
         JRadioButton yes = new JRadioButton("               NO");
 
-        ImageIcon icon1 = new ImageIcon(new ImageIcon("C:/Users/Bianca/Desktop/Imagini/male.png").getImage().getScaledInstance(1,1,Image.SCALE_DEFAULT));
+        ImageIcon icon1 = new ImageIcon(new ImageIcon("Imagini/male.png").getImage().getScaledInstance(1,1,Image.SCALE_DEFAULT));
         no.setIcon(icon1);
         yes.setIcon(icon1);
 
@@ -113,15 +113,15 @@ public class VegetarianScreen extends JFrame {
 
                 if (yes.isSelected()) {
                     UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "VEGETARIAN","yes");
-                    GoalScreen gs = new GoalScreen();
-                    gs.setVisible(true);
+                    InfoScreen is = new InfoScreen();
+                    is.setVisible(true);
                     dispose();
                 }
 
                 else if (no.isSelected()) {
                     UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "VEGETARIAN","no");
-                    GoalScreen gs = new GoalScreen();
-                    gs.setVisible(true);
+                    InfoScreen is = new InfoScreen();
+                    is.setVisible(true);
                     dispose();
                 }
                 else{
@@ -140,8 +140,8 @@ public class VegetarianScreen extends JFrame {
         JButton backToMainScreen = new JButton("<< Back to Main Page");
         backToMainScreen.addActionListener(e -> {
             dispose();
-            GenderScreen gs = new GenderScreen();
-            gs.setVisible(true);
+            TypicalDayScreen td = new TypicalDayScreen();
+            td.setVisible(true);
         });
         topPanel.add(backToMainScreen);
 

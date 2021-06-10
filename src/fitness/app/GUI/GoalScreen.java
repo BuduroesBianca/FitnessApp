@@ -39,7 +39,7 @@ public class GoalScreen extends JFrame {
         JRadioButton gain = new JRadioButton("               Gain Muscle");
         JRadioButton maintain = new JRadioButton("     Develop Healthy Habits");
 
-        ImageIcon icon1 = new ImageIcon(new ImageIcon("C:/Users/Bianca/Desktop/Imagini/male.png").getImage().getScaledInstance(1,1,Image.SCALE_DEFAULT));
+        ImageIcon icon1 = new ImageIcon(new ImageIcon("Imagini/male.png").getImage().getScaledInstance(1,1,Image.SCALE_DEFAULT));
         lose.setIcon(icon1);
         gain.setIcon(icon1);
         maintain.setIcon(icon1);
@@ -140,21 +140,21 @@ public class GoalScreen extends JFrame {
 
                 if (lose.isSelected()) {
                     UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "GOAL","Lose weight");
-                    InfoScreen gs = new InfoScreen();
-                    gs.setVisible(true);
+                    TypicalDayScreen bt = new TypicalDayScreen();
+                    bt.setVisible(true);
                     dispose();
                 }
 
                 else if (gain.isSelected()) {
                     UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "GOAL","Gain muscle");
-                    InfoScreen gs = new InfoScreen();
-                    gs.setVisible(true);
+                    TypicalDayScreen bt = new TypicalDayScreen();
+                    bt.setVisible(true);
                     dispose();
                 }
                 else if (maintain.isSelected()) {
                     UsersDB.updateUser(services.getCurrentUser().getFname(),services.getCurrentUser().getLname(), "GOAL","Maintain weight");
-                    InfoScreen gs = new InfoScreen();
-                    gs.setVisible(true);
+                    TypicalDayScreen bt = new TypicalDayScreen();
+                    bt.setVisible(true);
                     dispose();
                 }
                 else{
@@ -173,7 +173,7 @@ public class GoalScreen extends JFrame {
         JButton backToMainScreen = new JButton("<< Back to Main Page");
         backToMainScreen.addActionListener(e -> {
             dispose();
-            GenderScreen gs = new GenderScreen();
+            BodyTypeScreenFemale gs = new BodyTypeScreenFemale();
             gs.setVisible(true);
         });
         topPanel.add(backToMainScreen);

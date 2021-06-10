@@ -67,6 +67,21 @@ public class MainScreen extends JFrame{
             public void menuCanceled(MenuEvent e) {}
         });
 
+        quiz.addMenuListener(new MenuListener() {
+            @Override
+            public void menuSelected(MenuEvent e) {
+                dispose();
+                GenderScreen gs = new GenderScreen();
+                gs.setVisible(true);
+            }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {}
+
+            @Override
+            public void menuCanceled(MenuEvent e) {}
+        });
+
         return menuBar;
     }
 }
