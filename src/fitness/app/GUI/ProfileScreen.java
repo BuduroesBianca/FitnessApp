@@ -29,6 +29,8 @@ public class ProfileScreen extends JFrame {
     JPanel infoPanel(){
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(null);
+        infoPanel.setOpaque(true);
+        infoPanel.setBackground(Color.decode("#f5ebd5"));
 
         JLabel labelLastName = new JLabel("Last Name:");
         labelLastName.setBounds(190, 185, 200, 30);
@@ -102,13 +104,26 @@ public class ProfileScreen extends JFrame {
         passwordField.setEnabled(false);
         infoPanel.add(passwordField);
 
+        JLabel labelTitle = new JLabel("MY PROFILE", JLabel.CENTER);
+        labelTitle.setFont(new Font("Arial", Font.BOLD, 20));
+        labelTitle.setBounds(260,30,200,30);
+        labelTitle.setBorder(new EmptyBorder(0, 60, 0, 0));
+        infoPanel.add(labelTitle);
+
         return infoPanel;
     }
 
     JPanel topPanel(){
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 5, 20));
-        JButton backToMainScreen = new JButton("<< Back to Main Page");
+        JButton backToMainScreen = new JButton("Back to Main Page");
+        backToMainScreen.setOpaque(true);
+        backToMainScreen.setBackground(Color.black);
+        backToMainScreen.setForeground(Color.white);
+        backToMainScreen.setBorderPainted(true);
+        backToMainScreen.setBorder(BorderFactory.createLineBorder(Color.black, 8));
+        backToMainScreen.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 12));
+
         backToMainScreen.addActionListener(e -> {
             dispose();
             MainScreen mainScreen = new MainScreen();
@@ -116,10 +131,6 @@ public class ProfileScreen extends JFrame {
         });
         topPanel.add(backToMainScreen);
 
-        JLabel labelTitle = new JLabel("MY PROFILE", JLabel.CENTER);
-        labelTitle.setFont(new Font("Arial", Font.BOLD, 20));
-        labelTitle.setBorder(new EmptyBorder(0, 60, 0, 0));
-        topPanel.add(labelTitle);
         return topPanel;
     }
 
@@ -130,6 +141,10 @@ public class ProfileScreen extends JFrame {
         bottomPanel.setLayout(layout);
 
         JButton deleteButton = new JButton("DELETE ACCOUNT");
+        deleteButton.setOpaque(true);
+        deleteButton.setBackground(Color.decode("#999999"));
+        deleteButton.setForeground(Color.white);
+
         deleteButton.addActionListener(e -> {
             int deleteAccount = JOptionPane.showConfirmDialog(getRootPane(),"Are you sure you want to delete your account?","DELETE ACCOUNT",
                     JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);

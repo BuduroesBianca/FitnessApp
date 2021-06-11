@@ -16,60 +16,88 @@ public class RegisterScreen extends JFrame {
         setTitle("Registration Form");
         setLocationRelativeTo(null);
 
-        JLabel labelTitle = new JLabel("New user registration:");
-        labelTitle.setFont(new Font("Ariel", Font.BOLD, 20));
-        labelTitle.setBounds(150, 20, 400, 30);
+
+        JLabel labelTitle = new JLabel("New User Registration");
+        labelTitle.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 20));
+        labelTitle.setBounds(160, 70, 400, 30);
+
         add(labelTitle);
 
-        JLabel labelLastName = new JLabel("Last Name:");
-        labelLastName.setBounds(80, 120, 200, 30);
+        JLabel labelLastName = new JLabel("Last Name",JLabel.CENTER);
+        labelLastName.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
+        labelLastName.setBounds(65, 160, 200, 30);
+        labelLastName.setOpaque(true);
+        labelLastName.setBackground(Color.black);
+        labelLastName.setForeground(Color.WHITE);
         add(labelLastName);
 
-        JLabel labelFirstName = new JLabel("First Name:");
-        labelFirstName.setBounds(80, 160, 200, 30);
+        JLabel labelFirstName = new JLabel("First Name",JLabel.CENTER);
+        labelFirstName.setBounds(65, 200, 200, 30);
+        labelFirstName.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
+        labelFirstName.setOpaque(true);
+        labelFirstName.setBackground(Color.black);
+        labelFirstName.setForeground(Color.WHITE);
         add(labelFirstName);
 
-        JLabel labelPhoneNumber = new JLabel("Phone number:");
-        labelPhoneNumber.setBounds(80, 200, 200, 30);
-        add(labelPhoneNumber);
-
-        JLabel labelEmail = new JLabel("Email:");
-        labelEmail.setBounds(80, 240, 200, 30);
+        JLabel labelEmail = new JLabel("Email",JLabel.CENTER);
+        labelEmail.setBounds(65, 240, 200, 30);
+        labelEmail.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
+        labelEmail.setOpaque(true);
+        labelEmail.setBackground(Color.black);
+        labelEmail.setForeground(Color.WHITE);
         add(labelEmail);
 
-        JLabel labelUsername = new JLabel("Username:");
-        labelUsername.setBounds(80, 280, 200, 30);
+        JLabel labelUsername = new JLabel("Username",JLabel.CENTER);
+        labelUsername.setBounds(65, 280, 200, 30);
+        labelUsername.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
+        labelUsername.setOpaque(true);
+        labelUsername.setBackground(Color.black);
+        labelUsername.setForeground(Color.WHITE);
         add(labelUsername);
 
-        JLabel labelPassword = new JLabel("Password:");
-        labelPassword.setBounds(80, 320, 200, 30);
+        JLabel labelPassword = new JLabel("Password",JLabel.CENTER);
+        labelPassword.setBounds(65, 320, 200, 30);
+        labelPassword.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
+        labelPassword.setOpaque(true);
+        labelPassword.setBackground(Color.black);
+        labelPassword.setForeground(Color.WHITE);
         add(labelPassword);
 
         JTextField lastNameTextField = new JTextField();
-        lastNameTextField.setBounds(220, 120, 200, 30);
+        lastNameTextField.setBounds(270, 160, 200, 30);
+        lastNameTextField.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
         add(lastNameTextField);
 
         JTextField firstNameTextField = new JTextField();
-        firstNameTextField.setBounds(220, 160, 200, 30);
+        firstNameTextField.setBounds(270, 200, 200, 30);
+        firstNameTextField.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
         add(firstNameTextField);
 
-        JTextField phoneTextField = new JTextField();
-        phoneTextField.setBounds(220, 200, 200, 30);
-        add(phoneTextField);
 
         JTextField emailTextField = new JTextField();
-        emailTextField.setBounds(220, 240, 200, 30);
+        emailTextField.setBounds(270, 240, 200, 30);
+        emailTextField.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
         add(emailTextField);
 
         JTextField usernameTextField = new JTextField();
-        usernameTextField.setBounds(220, 280, 200, 30);
+        usernameTextField.setBounds(270, 280, 200, 30);
+        usernameTextField.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
         add(usernameTextField);
 
         JPasswordField passwordField = new JPasswordField();
-        passwordField.setBounds(220, 320, 200, 30);
+        passwordField.setBounds(270, 320, 200, 30);
+        passwordField.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 13));
         add(passwordField);
 
         JButton submitButton = new JButton("ADD ACCOUNT");
+        submitButton.setOpaque(true);
+        submitButton.setBackground(Color.decode("#999999"));
+        submitButton.setForeground(Color.WHITE);
+        submitButton.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 15));
+
+        submitButton.setBounds(110, 390, 300, 30);
+        add(submitButton);
+
         submitButton.addActionListener(e -> {
             String[] userData =  new String[5];
             int countValidInput = 0;
@@ -121,14 +149,24 @@ public class RegisterScreen extends JFrame {
 
         });
 
-        submitButton.setBounds(100, 430, 300, 30);
-        add(submitButton);
 
-        JLabel alreadyHaveAccount = new JLabel("Already have an account?");
-        alreadyHaveAccount.setBounds(100, 470, 200, 30);
-        add(alreadyHaveAccount);
+
+        JLabel text = new JLabel("Already Have an Account?",JLabel.CENTER);
+        text.setFont(new Font("Microsoft YaHei UI", Font.BOLD,13));
+        text.setBounds(0,480,280,30);
+        text.setBorder(BorderFactory.createLineBorder(Color.white,3));
+        add(text);
 
         JButton loginButton = new JButton("SIGN IN");
+
+        loginButton.setOpaque(true);
+        loginButton.setBackground(Color.white);
+        loginButton.setFont(new Font("Microsoft YaHei UI", Font.BOLD,15));
+        loginButton.setBounds(280,480,255,30);
+        loginButton.setBorder(BorderFactory.createLineBorder(Color.white,3));
+        add(loginButton);
+
+
         loginButton.addActionListener(e -> {
             EventQueue.invokeLater(new Runnable()
             {
@@ -148,7 +186,5 @@ public class RegisterScreen extends JFrame {
             dispose();
         });
 
-        loginButton.setBounds(305, 470, 100, 30);
-        add(loginButton);
     }
 }

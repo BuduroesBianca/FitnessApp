@@ -176,6 +176,7 @@ public class MainScreen extends JFrame{
         quizButton.setForeground(Color.WHITE);
         quizButton.setBorder(BorderFactory.createLineBorder(Color.decode("#d63a51"), 5));
         quizButton.setBorderPainted(true);
+        quizButton.setFocusPainted(false);
 
         quizButton.addActionListener(e -> {
             GenderScreen g = new GenderScreen();
