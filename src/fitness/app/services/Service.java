@@ -3,13 +3,7 @@ package fitness.app.services;
 import fitness.app.User;
 import fitness.app.UsersDB;
 
-import javax.swing.*;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
+import java.util.List;
 
 
 final public class Service {
@@ -96,50 +90,53 @@ final public class Service {
 
     }
 
-    public double calculateLoseWeightCalories(){
+    public int calculateLoseWeightCalories(){
         double maintainCalories = calculateMaintainCalories();
-        double loseCalories = 75/100 * maintainCalories;
+        double loseCalories = 0.75 * maintainCalories;
 
-        return loseCalories;
+        int result = (int) loseCalories;
+        return result;
 
     }
 
-    public double calculateGainMuscleCalories(){
+    public int calculateGainMuscleCalories(){
         double maintainCalories = calculateMaintainCalories();
-        double gainCalories = 115/100 * maintainCalories;
-
-        return gainCalories;
+        double gainCalories = 1.15 * maintainCalories;
+        int result = (int) gainCalories;
+        return result;
 
     }
 
-    public double calculateMaintainCalories(){
-        int weight = getCurrentUser().getWeight();
-        String bodyType = getCurrentUser().getBodyType();
-        String typicalDay = getCurrentUser().getTypicalDay();
-        String gender = getCurrentUser().getGender();
+    public int calculateMaintainCalories(){
+        System.out.println(getCurrentUser().getFname());
+        int weight = udb.getWeight(getCurrentUser().getUsername());
+        String bodyType = udb.getBodyType(getCurrentUser().getUsername());
+        String typicalDay = udb.getTypicalDay(getCurrentUser().getUsername());
+        String gender = udb.getGender(getCurrentUser().getUsername());
 
         int g = 0;
         double bt = 0;
         double l = 0;
 
-        if(gender == "Female"){ g = 20; }
-        if(gender == "Male") { g = 22; }
+        if(gender.equalsIgnoreCase("Female")){ g = 20; }
+        if(gender.equalsIgnoreCase("Male")) { g = 22; }
 
-        if(bodyType == "Pear") { bt = 1.5; }
-        else if (bodyType == "Round") { bt = 1.3; }
-        else if (bodyType == "Rectangular") { bt = 1.7; }
-        else if (bodyType == "Hourglass") { bt = 1.5; }
+        if(bodyType.equalsIgnoreCase( "Pear")) { bt = 1.5; }
+        else if (bodyType.equalsIgnoreCase("Round")) { bt = 1.3; }
+        else if (bodyType.equalsIgnoreCase("Rectangle")) { bt = 1.7; }
+        else if (bodyType.equalsIgnoreCase("Hourglass")) { bt = 1.5; }
 
-        if(typicalDay == "Mostly at home") { l = 0; }
-        else if(typicalDay == "At the office") { l = 0.2; }
-        else if(typicalDay == "Daily long walks") { l = 0.4; }
-        else if(typicalDay == "Physical work") { l = 0.6; }
+        if(typicalDay.equalsIgnoreCase("Mostly at home")) { l = 0; }
+        else if(typicalDay.equalsIgnoreCase("At the office")) { l = 0.2; }
+        else if(typicalDay.equalsIgnoreCase( "Daily long walks")) { l = 0.4; }
+        else if(typicalDay.equalsIgnoreCase("Physical work")) { l = 0.6; }
 
         double maintainCalories = weight * g * (bt + l);
-        return maintainCalories;
+        int result = (int) maintainCalories;
+        return result;
     }
 
-    public double calculateBMR(){
+    public int calculateBMR(){
         System.out.println(getCurrentUser().getFname());
         int weight = udb.getWeight(getCurrentUser().getUsername());
         int height = udb.getHeight(getCurrentUser().getUsername());
@@ -155,7 +152,9 @@ final public class Service {
             BMR = 88.362 + (13.397*weight) + (4.799*height) - (5.677*age); // BMR barbati
         }
         System.out.println(BMR);
-        return BMR;
+
+        int result = (int) BMR;
+        return result;
     }
 
 }

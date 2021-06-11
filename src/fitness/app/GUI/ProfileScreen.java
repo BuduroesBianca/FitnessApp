@@ -31,53 +31,73 @@ public class ProfileScreen extends JFrame {
         infoPanel.setLayout(null);
 
         JLabel labelLastName = new JLabel("Last Name:");
-        labelLastName.setBounds(80, 185, 100, 30);
+        labelLastName.setBounds(190, 185, 200, 30);
+        labelLastName.setOpaque(true);
+        labelLastName.setBackground(Color.black);
+        labelLastName.setForeground(Color.white);
+        labelLastName.setHorizontalAlignment(SwingConstants.CENTER);
         add(labelLastName);
 
         JLabel labelFirstName = new JLabel("First Name:");
-        labelFirstName.setBounds(80, 160, 200, 30);
+        labelFirstName.setBounds(190, 160, 200, 30);
+        labelFirstName.setOpaque(true);
+        labelFirstName.setBackground(Color.black);
+        labelFirstName.setForeground(Color.white);
+        labelFirstName.setHorizontalAlignment(SwingConstants.CENTER);
         infoPanel.add(labelFirstName);
 
         JLabel labelEmail = new JLabel("Email:");
-        labelEmail.setBounds(80, 200, 200, 30);
+        labelEmail.setBounds(190, 200, 200, 30);
+        labelEmail.setOpaque(true);
+        labelEmail.setBackground(Color.black);
+        labelEmail.setForeground(Color.white);
+        labelEmail.setHorizontalAlignment(SwingConstants.CENTER);
         infoPanel.add(labelEmail);
 
 
         JLabel labelUsername = new JLabel("Username:");
-        labelUsername.setBounds(80, 240, 200, 30);
+        labelUsername.setBounds(190, 240, 200, 30);
+        labelUsername.setOpaque(true);
+        labelUsername.setBackground(Color.black);
+        labelUsername.setForeground(Color.white);
+        labelUsername.setHorizontalAlignment(SwingConstants.CENTER);
         infoPanel.add(labelUsername);
 
         JLabel labelPassword = new JLabel("Password:");
-        labelPassword.setBounds(80, 280, 200, 30);
+        labelPassword.setBounds(190, 280, 200, 30);
+        labelPassword.setOpaque(true);
+        labelPassword.setBackground(Color.black);
+        labelPassword.setForeground(Color.white);
+        labelPassword.setHorizontalAlignment(SwingConstants.CENTER);
         infoPanel.add(labelPassword);
 
         String[] data = ((User)services.getCurrentUser()).getObjectData();
         lastNameTextField = new JTextField();
-        lastNameTextField.setBounds(220, 120, 200, 30);
+        lastNameTextField.setBounds(400, 120, 200, 30);
         lastNameTextField.setText(data[1]);
         lastNameTextField.setEnabled(false);
         infoPanel.add(lastNameTextField);
 
         firstNameTextField = new JTextField();
-        firstNameTextField.setBounds(220, 160, 200, 30);
+        firstNameTextField.setBounds(400, 160, 200, 30);
         firstNameTextField.setText(data[2]);
         firstNameTextField.setEnabled(false);
         infoPanel.add(firstNameTextField);
 
         emailTextField = new JTextField();
-        emailTextField.setBounds(220, 200, 200, 30);
+        emailTextField.setBounds(400, 200, 200, 30);
         emailTextField.setText(data[3]);
         emailTextField.setEnabled(false);
         infoPanel.add(emailTextField);
 
         usernameTextField = new JTextField();
-        usernameTextField.setBounds(220, 240, 200, 30);
+        usernameTextField.setBounds(400, 240, 200, 30);
         usernameTextField.setText(data[4]);
         usernameTextField.setEnabled(false);
         infoPanel.add(usernameTextField);
 
         passwordField = new JTextField();
-        passwordField.setBounds(220, 280, 200, 30);
+        passwordField.setBounds(400, 280, 200, 30);
         passwordField.setText(data[5]);
         passwordField.setEnabled(false);
         infoPanel.add(passwordField);

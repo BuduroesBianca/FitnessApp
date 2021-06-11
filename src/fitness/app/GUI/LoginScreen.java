@@ -5,8 +5,6 @@ import fitness.app.services.Service;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LoginScreen extends JFrame{
     static private GridBagLayout gridBag;
@@ -72,7 +70,7 @@ public class LoginScreen extends JFrame{
 
         JButton logInButton = new JButton("LOG IN");
 
-       /*logInButton.addActionListener(e -> {
+       logInButton.addActionListener(e -> {
             String username = textUsername.getText();
             String password = String.valueOf(textPassword.getPassword());
             boolean invalidUsernameInput = username.isEmpty() || username.isBlank() || username == null;
@@ -102,12 +100,12 @@ public class LoginScreen extends JFrame{
                     }
                 }
             }
-        });*/
-      logInButton.addActionListener(e -> {
+        });
+      /*logInButton.addActionListener(e -> {
             DashboardScreen g = new DashboardScreen();
             g.setVisible(true);
             dispose();
-        });
+        });*/
 
         gridCons.fill = GridBagConstraints.HORIZONTAL;
         addComponentInGrid(logInButton,1,4,2,1);

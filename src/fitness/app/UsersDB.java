@@ -1,17 +1,8 @@
 package fitness.app;
 
-import javax.xml.crypto.Data;
-import java.util.*;
 import java.sql.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Collectors;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersDB {
 
@@ -115,6 +106,48 @@ public class UsersDB {
         }catch (SQLException e){
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public String getGoal(String username) {
+        String goal = "";
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT GOAL FROM users WHERE USERNAME = '" + username + "'");
+
+            while(resultSet.next())
+                goal = resultSet.getString(1);
+            return goal;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getBodyType(String username) {
+        String bodyType = "";
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT BODYTYPE FROM users WHERE USERNAME = '" + username + "'");
+            while(resultSet.next())
+                bodyType = resultSet.getString(1);
+            return bodyType;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public String getTypicalDay(String username) {
+        String typicalDay = "";
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT BODYTYPE FROM users WHERE USERNAME = '" + username + "'");
+            while(resultSet.next())
+                typicalDay = resultSet.getString(1);
+            return typicalDay;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
         }
     }
 

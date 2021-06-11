@@ -31,6 +31,8 @@ public class MainScreen extends JFrame{
         JMenu quiz = new JMenu("QUIZ");
         JMenu profile = new JMenu("MY PROFILE");
         JMenu dashboard = new JMenu("DASHBOARD");
+        JMenu home = new JMenu("HOME");
+        menuBar.add(home);
         menuBar.add(quiz);
         menuBar.add(profile);
         menuBar.add(dashboard);
@@ -49,6 +51,36 @@ public class MainScreen extends JFrame{
                     dispose();
                 }
             }
+            @Override
+            public void menuDeselected(MenuEvent e) {}
+
+            @Override
+            public void menuCanceled(MenuEvent e) {}
+        });
+
+        dashboard.addMenuListener(new MenuListener() {
+            @Override
+            public void menuSelected(MenuEvent e) {
+                dispose();
+                DashboardScreen gs = new DashboardScreen();
+                gs.setVisible(true);
+            }
+
+            @Override
+            public void menuDeselected(MenuEvent e) {}
+
+            @Override
+            public void menuCanceled(MenuEvent e) {}
+        });
+
+        home.addMenuListener(new MenuListener() {
+            @Override
+            public void menuSelected(MenuEvent e) {
+                dispose();
+                MainScreen gs = new MainScreen();
+                gs.setVisible(true);
+            }
+
             @Override
             public void menuDeselected(MenuEvent e) {}
 
