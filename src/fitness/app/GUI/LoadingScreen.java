@@ -1,18 +1,13 @@
 package fitness.app.GUI;
 
 
-
 import fitness.app.UsersDB;
 import fitness.app.services.Service;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
-
-import static javax.swing.JOptionPane.showMessageDialog;
 
 public class LoadingScreen extends JFrame{
 

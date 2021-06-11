@@ -130,7 +130,21 @@ public class RegisterScreen extends JFrame {
 
         JButton loginButton = new JButton("SIGN IN");
         loginButton.addActionListener(e -> {
-            new fitness.app.GUI.LoginScreen();
+            EventQueue.invokeLater(new Runnable()
+            {
+                public void run()
+                {
+                    try
+                    {
+                        fitness.app.GUI.LoginScreen ls = new fitness.app.GUI.LoginScreen();
+                        ls.setVisible(true);
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            });
             dispose();
         });
 

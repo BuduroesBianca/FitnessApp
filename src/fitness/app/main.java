@@ -1,15 +1,28 @@
 package fitness.app;
-import java.sql.SQLException;
-import java.util.*;
+
+import java.awt.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
+
 public class main {
+
     public static void main(String[] args) throws ParseException{
 
-        UsersDB udb = UsersDB.getDatabaseInstance();
-        //udb.dropTable();
-        //udb.addUser("Bianca","Buduroes","bianca@gmail.com","biancaabbe","Bianca02");
-        udb.showUser();
-        new fitness.app.GUI.LoginScreen();
+        EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                try
+                {
+                    fitness.app.GUI.LoginScreen ls = new fitness.app.GUI.LoginScreen();
+                    ls.setVisible(true);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 }

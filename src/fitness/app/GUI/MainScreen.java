@@ -47,7 +47,21 @@ public class MainScreen extends JFrame{
 
                 if (logOut == JOptionPane.YES_OPTION) {
                     services.logOut();
-                    new LoginScreen();
+                    EventQueue.invokeLater(new Runnable()
+                    {
+                        public void run()
+                        {
+                            try
+                            {
+                                fitness.app.GUI.LoginScreen ls = new fitness.app.GUI.LoginScreen();
+                                ls.setVisible(true);
+                            }
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
                     dispose();
                 }
             }

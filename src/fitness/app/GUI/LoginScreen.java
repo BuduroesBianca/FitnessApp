@@ -9,68 +9,77 @@ import java.awt.*;
 public class LoginScreen extends JFrame{
     static private GridBagLayout gridBag;
     static private GridBagConstraints gridCons;
-    static private JPanel panel;
     private Service services = Service.getServicesInstance();
 
-    static void addComponentInGrid(Component c, int x, int y, int w, int h){
-        gridCons.gridx = x;
-        gridCons.gridy = y;
-        gridCons.gridwidth = w;
-        gridCons.gridheight = h;
-        gridBag.setConstraints(c, gridCons);
-        panel.add(c);
-    }
 
-    public LoginScreen(){
+    public LoginScreen() {
+        setSize(500, 500);
+        setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setTitle("LOG IN PAGE");
-        panel = (JPanel) getContentPane();
-        gridBag = new GridBagLayout();
-        panel.setLayout(gridBag);
-        panel.setOpaque(true);
-        panel.setBackground(Color.decode("#f5ebd5"));
+        setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
+
+        JPanel infoPanel = new JPanel();
+        infoPanel.setOpaque(true);
+        infoPanel.setBackground(Color.decode("#f5ebd5"));
+        infoPanel.setLayout(null);
+        setLayout(new BorderLayout());
+
         JLabel loginIcon = new JLabel();
 
         ImageIcon img = new ImageIcon(new ImageIcon("Imagini/login.gif").getImage().getScaledInstance(180,250,Image.SCALE_DEFAULT));
         loginIcon.setIcon(img);
 
+        loginIcon.setBounds(150,40,180,200);
+        infoPanel.add(loginIcon);
 
-        gridCons = new GridBagConstraints();
-        gridCons.weightx = 1;
-        gridCons.weighty = 1;
-        gridCons.insets = new Insets(6,6,6,6);
-        JLabel labelLogin = new JLabel("LOGIN", JLabel.CENTER);
-        labelLogin.setFont(new Font("Arial",Font.BOLD,22));
-        gridCons.fill = GridBagConstraints.BOTH;
 
         JLabel labelIcon = new JLabel();
         labelIcon.setIcon(img);
         labelIcon.setHorizontalAlignment(JLabel.CENTER);
 
-        addComponentInGrid(labelIcon,0,0,3,1);
-        //addComponentInGrid(loginIcon,1,1,3,1);
 
-        JLabel labelUsername = new JLabel("Username:");
-        gridCons.fill = GridBagConstraints.NONE;
-        gridCons.anchor = GridBagConstraints.CENTER;
-        addComponentInGrid(labelUsername,0,1,1,3);
-        labelUsername.setBounds(0,300,100,20);
+        JLabel labelUsername = new JLabel("Username",JLabel.CENTER);
+        labelUsername.setBounds(30,250,200,30);
+        labelUsername.setForeground(Color.white);
+        labelUsername.setOpaque(true);
+        labelUsername.setFont(new Font("Microsoft YaHei UI", Font.BOLD,15));
+        labelUsername.setBackground(Color.black);
+        infoPanel.add(labelUsername);
 
-        JLabel labelPassword = new JLabel("Password:");
+        JLabel labelPassword = new JLabel("Password",JLabel.CENTER);
+        labelPassword.setForeground(Color.white);
+        labelPassword.setOpaque(true);
+        labelPassword.setFont(new Font("Microsoft YaHei UI", Font.BOLD,15));
+        labelPassword.setBackground(Color.black);
+        labelPassword.setBounds(30,290,200,30);
+        infoPanel.add(labelPassword);
 
-        addComponentInGrid(labelPassword,0,2,1,3);
 
-        gridCons.fill = GridBagConstraints.HORIZONTAL;
-        gridCons.anchor = GridBagConstraints.CENTER;
         JTextField textUsername = new JTextField("",30);
         JPasswordField textPassword = new JPasswordField("",30);
+        textUsername.setBounds(240,250,200,30);
+        textPassword.setBounds(240,290,200,30);
+        textPassword.setFont(new Font("Microsoft YaHei UI", Font.BOLD,15));
+        textUsername.setFont(new Font("Microsoft YaHei UI", Font.BOLD,15));
         textPassword.setBorder(BorderFactory.createLineBorder(Color.white));
-        addComponentInGrid(textUsername,1,1,2,3);
-        addComponentInGrid(textPassword,1,2,2,3);
         textUsername.setBorder(BorderFactory.createLineBorder(Color.white));
 
-        JButton logInButton = new JButton("LOG IN");
+        infoPanel.add(textUsername);
+        infoPanel.add(textPassword);
 
-       logInButton.addActionListener(e -> {
+        JButton logInButton = new JButton("LOG IN");
+        logInButton.setBounds(160,360,150,30);
+        logInButton.setOpaque(true);
+        logInButton.setBackground(Color.decode("#999999"));
+        logInButton.setFont(new Font("Microsoft YaHei UI", Font.BOLD,15));
+        logInButton.setForeground(Color.WHITE);
+
+        infoPanel.add(logInButton);
+
+        logInButton.addActionListener(e -> {
             String username = textUsername.getText();
             String password = String.valueOf(textPassword.getPassword());
             boolean invalidUsernameInput = username.isEmpty() || username.isBlank() || username == null;
@@ -107,23 +116,29 @@ public class LoginScreen extends JFrame{
             dispose();
         });*/
 
-        gridCons.fill = GridBagConstraints.HORIZONTAL;
-        addComponentInGrid(logInButton,1,4,2,1);
-
         JButton signUpButton = new JButton("SIGN UP");
+
+        JLabel text = new JLabel("You Don't Have an Account?",JLabel.CENTER);
+        text.setFont(new Font("Microsoft YaHei UI", Font.BOLD,13));
+        text.setBounds(0,430,250,30);
+        text.setBorder(BorderFactory.createLineBorder(Color.white,3));
+
+        signUpButton.setOpaque(true);
+        signUpButton.setBackground(Color.white);
+        signUpButton.setFont(new Font("Microsoft YaHei UI", Font.BOLD,15));
+        signUpButton.setBounds(250,430,235,30);
+        signUpButton.setBorder(BorderFactory.createLineBorder(Color.white,3));
+
+        infoPanel.add(signUpButton);
+        infoPanel.add(text);
         signUpButton.addActionListener(e -> {
             fitness.app.GUI.RegisterScreen registerScreen = new fitness.app.GUI.RegisterScreen();
             dispose();
             registerScreen.setVisible(true);
         });
-        addComponentInGrid(signUpButton,3,4,2,1);
-
-        setSize(new Dimension(500,500));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        setVisible(true);
-        setLocationRelativeTo(null);
+        setContentPane(infoPanel);
 
     }
+
 
 }
