@@ -1,6 +1,7 @@
 package fitness.app.GUI;
 
 import fitness.app.services.Service;
+import fitness.app.users.UsersDB;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
@@ -10,6 +11,7 @@ import java.awt.*;
 public class MainScreen extends JFrame{
 
     private Service services = Service.getServicesInstance();
+    private UsersDB udb = UsersDB.getDatabaseInstance();
 
     MainScreen() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -35,7 +37,9 @@ public class MainScreen extends JFrame{
         menuBar.add(home);
         menuBar.add(quiz);
         menuBar.add(profile);
-        menuBar.add(dashboard);
+        if(udb.getGender(services.getCurrentUser().getUsername()) != null) {
+            menuBar.add(dashboard);
+        }
         menuBar.add(Box.createHorizontalGlue());
         menuBar.add(logOut);
 
@@ -75,9 +79,11 @@ public class MainScreen extends JFrame{
         dashboard.addMenuListener(new MenuListener() {
             @Override
             public void menuSelected(MenuEvent e) {
+
                 dispose();
                 DashboardScreen gs = new DashboardScreen();
                 gs.setVisible(true);
+
             }
 
             @Override

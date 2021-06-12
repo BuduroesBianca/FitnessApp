@@ -137,7 +137,21 @@ public class RegisterScreen extends JFrame {
                         boolean checkRegistration = services.registerUser(userData);
                         if (checkRegistration) {
                             JOptionPane.showMessageDialog(getRootPane(), "Successful user registration!");
-                            new fitness.app.GUI.LoginScreen();
+                            EventQueue.invokeLater(new Runnable()
+                            {
+                                public void run()
+                                {
+                                    try
+                                    {
+                                        fitness.app.GUI.LoginScreen ls = new fitness.app.GUI.LoginScreen();
+                                        ls.setVisible(true);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                             dispose();
                         } else
                             JOptionPane.showMessageDialog(getRootPane(), "Username already exists.", "Alert", JOptionPane.WARNING_MESSAGE);
