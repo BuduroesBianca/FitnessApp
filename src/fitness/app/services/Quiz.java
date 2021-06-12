@@ -1,4 +1,6 @@
-package fitness.app;
+package fitness.app.services;
+
+import fitness.app.users.UsersDB;
 
 import java.util.ArrayList;
 import java.util.Map;

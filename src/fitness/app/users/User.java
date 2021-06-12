@@ -1,4 +1,4 @@
-package fitness.app;
+package fitness.app.users;
 
 public class User {
 

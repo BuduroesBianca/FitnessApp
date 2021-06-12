@@ -1,6 +1,6 @@
 package fitness.app.GUI;
 
-import fitness.app.User;
+import fitness.app.users.User;
 import fitness.app.services.Service;
 
 import javax.swing.*;

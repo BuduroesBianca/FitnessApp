@@ -1,13 +1,10 @@
 package fitness.app.GUI;
 
-import fitness.app.User;
-import fitness.app.UsersDB;
+import fitness.app.users.UsersDB;
 import fitness.app.services.Service;
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static javax.swing.JOptionPane.showMessageDialog;

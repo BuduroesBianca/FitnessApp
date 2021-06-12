@@ -1,7 +1,7 @@
 package fitness.app.services;
 
-import fitness.app.User;
-import fitness.app.UsersDB;
+import fitness.app.users.User;
+import fitness.app.users.UsersDB;
 
 import java.util.List;
 
