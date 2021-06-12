@@ -1,7 +1,7 @@
 # FitnessApp
 
 ## This application is developed with the intention to help people achieve their <b><i>fitness goals and develop a healthy lifestyle</b></i>.
-## [Technical details/documentation](https://github.com/BuduroesBianca/FitnessApp/Documentation)
+## [Technical details/documentation](https://github.com/BuduroesBianca/FitnessApp/wiki/Documentation)
 
 # App Description 
 
