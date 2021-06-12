@@ -21,6 +21,6 @@
 
 # Application Desing Diagram
 
-![Diagram](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/FitnessAppDesign.jpeg)
+![Diagram](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/diagram.jpeg)
 
 
