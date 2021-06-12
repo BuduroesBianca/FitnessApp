@@ -1,6 +1,6 @@
 # FitnessApp
 
-### This application is developed with the intention to help people achieve their goals and develop healthy lifestyle.
+### This application is developed with the intention to help people achieve their <b><u>fitness goals and develop a healthy lifestyle</b></u>.
 
 # App Description 
 
