@@ -10,9 +10,11 @@
 * In the dashboard page you will have your <b>personal fitness program for the next 10 days</b>. For every single day you will have diferent <b>Meal Plans and Workouts</b> that will guide you through your journey. 
 * Meals Plans are selected <b>based on your calories that you need to consume each day</b> and the Woorkouts are picked <b>depending on your goal and also your gender</b> (if you want to lose weight - cardio workouts, gain muscle - weight training workouts, and both types for maintaining weight).
 
+# Demo
+![Demo](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/demoFitnessApp.gif)
+
 # Application Desing Diagram
 
 ![Diagram](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/FitnessAppDesign.jpeg)
 
-# Demo
-![Demo](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/demoFitnessApp.gif)
+
