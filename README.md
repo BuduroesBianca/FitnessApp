@@ -13,3 +13,6 @@
 # Application Desing Diagram
 
 ![Diagram](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/FitnessAppDesign.jpeg)
+
+# Demo
+![Demo](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/demoFitnessApp.gif)
