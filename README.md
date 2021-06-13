@@ -13,8 +13,8 @@
   * Lose weight Calories = 75% C
   * Gain weight Calories = 115% C
 * After you complete the quiz you will have access on the <b>dashboard page</b> created specially for you based on your preferences and  your results. 
-* In the dashboard page you will have your <b>personal fitness program for the next 10 days</b>. For every single day you will have diferent <b>Meal Plans and Workouts</b> that will guide you through your journey. 
-* Meals Plans are selected <b>based on your calories that you need to consume each day</b> and the Woorkouts are picked <b>depending on your goal and also your gender</b> (if you want to lose weight - cardio workouts, gain muscle - weight training workouts, and both types for maintaining weight).
+* In the dashboard page you will have your <b>personal fitness program for the next 10 days</b>. For every single day you will have different <b>Meal Plans and Workouts</b> that will guide you through your journey. 
+* Meal Plans are selected <b>based on your calories that you need to consume each day</b> and the Workouts are picked <b>depending on your goal and also your gender</b> (if you want to lose weight - cardio workouts, gain muscle - weight training workouts, and both types for maintaining weight).
 
 # Demo
 ![Demo](https://github.com/BuduroesBianca/FitnessApp/blob/master/Imagini/demoFitnessApp.gif)
